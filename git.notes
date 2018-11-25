@@ -11,3 +11,48 @@
 * To see what branches have been merged into the current branch, use `git branch --merged`
 
 * To see info on the current file use `git log <filename>`
+
+* To change the commit message of the most recent file that got checked in, use
+  `git commit --amend -m "new message" <filename>`. NOTE: changes the git history so
+  it should only be used if a git push has not already been done.
+
+* If you need to add a file to the previous commit:
+  first, use `git add <filename>` to add the file to the staging area,
+  then, use `git --amend` to bring up the last commit. Then save. This
+  will move the staged file into that commit. NOTE: only do this if a push
+  has **not** been done.
+
+* How to move a commit from one branch to another branch...
+  1. `git log` to get the commit hash to move
+  2. switch to the branch to move the commit to.  Eg, `git checkout my-branch`
+  3. Use `git cherry-pick <hash>` to grab the commit from the other branch
+  4. Change back to the original branch so we can remove the commit from that branch
+     eg, `git checkout <orig-branch>`
+  5.
+
+* NOTE: types of `git reset`
+    soft: removes the commit from the repository, but moves the changes to the
+      staging directory. IE, the changes are still there, waiting to be committed
+      EG, `git reset --soft <hashcode>`
+
+    mixed: (default) removes the commit from the repository, but moves the changes
+      back to the local source. In other words, the code changes are waiting
+      to be added and committed. EG, `git reset <hashcode>`
+
+    hard: removes the commit from the repository and does *not* keep the changes.
+      In this case, you specify the commit hash that you want it to be moved back
+      to. EG, `git reset <hashcode>`
+
+    NOTE: Use `git clean -df` to remove untracked/uncommitted changes from the local
+      Used to clean up a file mess.  EG, accidentally copied a bunch of unrelated files
+      into the source directory.
+
+* NOTE: You can use `git revert <hashcode>` to revert the code to that hashcode state
+      but under a new commit hashcode. This is useful because it keeps the original
+      code history which is important if others may have the previously updated code.
+      
+      
+
+
+
+

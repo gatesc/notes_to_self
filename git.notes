@@ -1,0 +1,13 @@
+**Contains some random notes on using git**
+
+* To start tracking code in git...
+  Use `git init`
+  Simply change into the directory that has the info and the run git intit
+
+* If you've accidentally staged some code that you don't want to commit (ie, you've used git add but don't want to do a git commit),
+  use `git reset <filename>` to remove the file from the staged area. It will
+  still have your changes, it just won't be in the staged area anymore.
+
+* To see what branches have been merged into the current branch, use `git branch --merged`
+
+* To see info on the current file use `git log <filename>`

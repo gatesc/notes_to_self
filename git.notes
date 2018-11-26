@@ -52,7 +52,107 @@
       code history which is important if others may have the previously updated code.
       
       
+**Git Workflow Notes**
+1) Fork a project to a private repository
+
+(from webpage)  git fork (press fork from webpage)
+(on local)  git clone <url_link from gatesc/projA>
+(on local)   git remote add upstream <url_link from github/EDA/projA>
+
+ 
+
+NOTE: here are now the repositiories:
+
+github.ibm.com/EDA/projA    is upstream
+gatesc/projA  is origin
+projA on local is master
+
+2) Doing work on local and then pushing changes back to the upstream repository
+
+a) create a branch
+
+git checkout -b new_branch
+
+b) do some work on the branch and check in
+
+<editing code on myFile>
+git status
+git add myFile
+git commit -m "added some new important feature" myFile
+git push    (note, this pushes the change to the origin (gatesc/projA).  NOT to the upstream)
+
+c) if desired, you can now merge the branch to master and then delete the branch
+
+git checkout master
+git merge new_branch
+if necessary, use git mergetool myFile, when a conflict has occurred
+git branch -d <branch_name>
+
+3) Update the master repo (the local repo) from the upstream repo
+
+git pull upstream master
+
+4) Update the gatesc projA private repository
+
+git push
+
+5) Update the upstream repo from the private gatesc/projA repo
+
+git push upstream master
+
+** More Random Notes **
+ To show all the available branches *
+
+git show-branch --list
+
+ 
+
+* Delete a branch
+
+git branch -d old_dont_care_branch
+
+ 
+
+* Show the configured repositories *
+
+git remote -v
+
+ 
+
+* Compare the current repository to the upstream repository
+
+git fetch upstream master
+
+gitdiff upstream/master master
+
+ 
+
+*NOTE* gitdiff is an alias that I use... alias gitdiff='git difftool --no-prompt'
+
+To set git difftool to use tkdiff, execute this on the command line:
+    git config --global diff.tool tkdiff
+
+    git config --global merge.tool tkdiff
+
+    git config --global --add difftool.prompt false
+
+ 
+
+* Restore a particular commit...
+
+git checkout <commit_hash>
+
+git checkout <commit_hash> -- <some_file>
 
 
+* Check when a branch was created
+
+git show --summary <branch_name>
+
+* Check if a branch has been merged (this lists the branches that have been merged into master)
+
+git branch --merged master
+
+ 
 
 

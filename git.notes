@@ -153,6 +153,12 @@ git show --summary <branch_name>
 
 git branch --merged master
 
+* Get a log of changes that I've made from a date
+
+git log --pretty=oneline --since="2019-01-01" --author="Charles Gates"
+git log --pretty=full --since="2019-01-01" --author="Charles Gates"
+
+
  
 
 
